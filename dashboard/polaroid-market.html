@@ -1,0 +1,212 @@
+<title>Instant Film Art Market</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; each finding sits in an "instant print" frame (thin sides, deep bottom caption strip) */
+:root{
+  --bg:#eef0f1; --paper:#ffffff; --ink:#1b2125; --muted:#5d686f; --line:#d5dadd;
+  --accent:#1d6b84; --accent-soft:#d6e8ee; --warm:#b4532a; --good:#2f7a4a;
+  --display:"Archivo",system-ui,sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#13171a; --paper:#1c2226; --ink:#e7ecee; --muted:#9aa6ad; --line:#2e373c;
+  --accent:#5fb3cf; --accent-soft:#1f3640; --warm:#e08a5f; --good:#6cc08a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#13171a; --paper:#1c2226; --ink:#e7ecee; --muted:#9aa6ad; --line:#2e373c;
+  --accent:#5fb3cf; --accent-soft:#1f3640; --warm:#e08a5f; --good:#6cc08a; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px}
+main{max-width:860px;margin:0 auto;display:grid;gap:40px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:1.55rem;font-weight:700}
+h3{font-size:1.05rem;font-weight:700}
+p{margin:0;max-width:65ch}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+header{display:grid;gap:16px}
+.lede{font-size:1.15rem;color:var(--ink)}
+.verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.pill{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.pill.up{background:color-mix(in srgb,var(--good) 18%,transparent);color:var(--good)}
+.pill.flat{background:color-mix(in srgb,var(--warm) 18%,transparent);color:var(--warm)}
+/* the instant-print frame */
+.print{background:var(--paper);border:1px solid var(--line);padding:18px 18px 0;box-shadow:0 1px 2px rgb(0 0 0 / .06);min-width:0}
+.print .cap{padding:14px 2px 22px;display:grid;gap:4px}
+.print .cap .k{font-family:var(--display);font-weight:800;font-size:1.9rem;font-variant-numeric:tabular-nums}
+.print .cap small{color:var(--muted);font-size:.85rem}
+.verdict .print .img{display:grid;gap:8px;padding-bottom:4px}
+section{display:grid;gap:16px}
+.chart{width:100%;height:auto;display:block}
+.chart text{fill:var(--muted);font-family:var(--mono);font-size:11px}
+.chart .lbl{fill:var(--ink);font-family:var(--body);font-size:12.5px}
+.chart .val{fill:var(--ink);font-weight:500}
+.grid line{stroke:var(--line)}
+.src{font-size:.8rem;color:var(--muted)}
+.src a{color:var(--accent)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--paper);border:1px solid var(--line);padding:16px;display:grid;gap:6px;align-content:start;min-width:0}
+.card p{font-size:.93rem;color:var(--muted)}
+.tw{overflow-x:auto;background:var(--paper);border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:560px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.phase{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line)}
+.phase:first-of-type{border-top:0}
+.phase .when{font-family:var(--mono);font-size:.85rem;color:var(--accent);font-weight:500}
+.phase ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:.93rem}
+.phase .ms{margin-top:8px;font-size:.88rem}
+.phase .ms b{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--good);font-weight:500;margin-right:6px}
+@media (max-width:560px){.phase{grid-template-columns:1fr;gap:4px}}
+.risk{border-left:3px solid var(--warm);padding:4px 0 4px 14px;display:grid;gap:4px}
+.risk p{font-size:.93rem;color:var(--muted)}
+footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+</style>
+
+<main>
+<header>
+  <span class="eyebrow">Market benchmark · November 2026</span>
+  <h1>Instant film is booming. Instant-film art prices are not, yet.</h1>
+  <p class="lede">Consumer demand for instant photography has more than doubled since 2020. The fine-art market for it is flat below the top tier. For a new artist that gap is the opportunity: a huge audience that already owns the cameras, and few established names serving it.</p>
+</header>
+
+<div class="verdict">
+  <div class="print"><div class="img"><span class="pill up">Growing</span><h3>Consumer medium</h3></div>
+    <div class="cap"><span class="k">¥627B</span><small>Fujifilm Imaging revenue FY2025, up from ¥285B in FY2020. H1 FY2026 +13.6%.</small></div></div>
+  <div class="print"><div class="img"><span class="pill flat">Flat</span><h3>Photography at auction</h3></div>
+    <div class="cap"><span class="k">$117M</span><small>Photography auction sales in 2024, about the same as 2005 ($113M), so down in real terms.</small></div></div>
+  <div class="print"><div class="img"><span class="pill up">Rising at the top</span><h3>Unique &amp; named works</h3></div>
+    <div class="cap"><span class="k">$7.5k → $64.5k</span><small>Nine Warhol Polaroids, resold 2012 → 2025 (Phillips). One data point, driven by names.</small></div></div>
+</div>
+
+<section aria-labelledby="t1">
+  <span class="eyebrow">01 · Is it growing?</span>
+  <h2 id="t1">Instax revenue doubled in five years</h2>
+  <p>Fujifilm's Imaging segment is dominated by instax and is the best public demand signal. Units have plateaued near 10M a year since 2018–19, so growth comes from pricier hybrid models and film. Fujifilm is still adding film capacity: about +10% by autumn 2026 and a further +20% by spring 2028.</p>
+  <div class="print"><svg class="chart" id="rev" viewBox="0 0 640 300" role="img" aria-label="Fujifilm Imaging segment revenue by fiscal year, billions of yen"></svg>
+    <div class="cap"><small>Fujifilm Imaging segment revenue, ¥ billions, fiscal years ending March. FY2023 not captured in the research sources.</small></div></div>
+  <p class="src">Sources: Fujifilm IR results FY2020–H1 FY2026; PetaPixel (Dec 2025, Oct 2026) on capacity investment.</p>
+</section>
+
+<section aria-labelledby="t2">
+  <span class="eyebrow">02 · Benchmark</span>
+  <h2 id="t2">Six price tiers, from $5 prints to $700k icons</h2>
+  <p>Collectors pay for names and unique objects, not for the medium. In a 2025 no-reserve sale of the old Polaroid Corporation collection, one SX-70 sold for $64. Manipulated, one-of-a-kind objects (Samaras) earn multiples over straight images by equally famous artists.</p>
+  <div class="print"><svg class="chart" id="tiers" viewBox="0 0 640 330" role="img" aria-label="Price ranges by tier on a logarithmic dollar scale"></svg>
+    <div class="cap"><small>Typical price range per tier, US$ including buyer's premium, log scale. Highlighted bars are realistic targets for a new artist in years 0–3.</small></div></div>
+  <div class="tw"><table>
+    <thead><tr><th>Tier</th><th>Range</th><th>Evidence</th></tr></thead>
+    <tbody>
+      <tr><td>Commoditised low end</td><td class="num">$3–30</td><td>Etsy / eBay "Polaroid" prints</td></tr>
+      <tr><td>Emerging, sold direct</td><td class="num">$50–700</td><td>Emulsion lifts from $50 on artist sites; a lift at ~$658 on 1stDibs</td></tr>
+      <tr><td>Established instant-film artists</td><td class="num">$300–2,800</td><td>Stefanie Schneider, Nicholas Winter on Artsper; Schneider editions $350–6,300</td></tr>
+      <tr><td>Blue-chip single Polaroids</td><td class="num">$2k–20k</td><td>Walker Evans SX-70 $2.3–6.4k; Mapplethorpe $13.1k (2023); Warhol $18.9k (2025)</td></tr>
+      <tr><td>Manipulated unique objects</td><td class="num">$15k–50k</td><td>Samaras Photo-Transformation $48,640 (Bonhams 2025)</td></tr>
+      <tr><td>Estate groups, large format, icons</td><td class="num">$50k–700k+</td><td>Nine Warhols $64.5k (2025); Beard collage $105.6k (2025); Tarkovsky ~$81k (2016)</td></tr>
+    </tbody></table></div>
+</section>
+
+<section aria-labelledby="t3">
+  <span class="eyebrow">03 · Opportunity</span>
+  <h2 id="t3">Five openings the boom creates</h2>
+  <div class="cards">
+    <div class="card"><h3>A young audience that already gets it</h3><p>Tens of millions hold an instant print each year. 77% of wealthy collectors spent under $50k on art in H1 2026; Gen Z collectors spent the most per head.</p></div>
+    <div class="card"><h3>Authenticity as AI copies the look</h3><p>AI "film look" images are everywhere and digital provenance is leaky. A chemical, one-of-one physical original is hard to fake.</p></div>
+    <div class="card"><h3>Thin, brand-run gatekeeping</h3><p>The 2024 Polaroid × Magnum Open Call drew 2,101 entries and showed winners at Paris Photo. Brand campaigns pick fresh voices.</p></div>
+    <div class="card"><h3>Scarce large formats</h3><p>8x10 film costs about $35 a sheet. Supersense in Vienna runs what it calls the last public 20x24 studio, at about €888 a portrait.</p></div>
+    <div class="card"><h3>Paid commercial work nearby</h3><p>Instax sponsors fashion weeks and music; Polaroid runs artist film editions (Thrasher × Neckface). Instant-film wedding packages start around $600.</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="t4">
+  <span class="eyebrow">04 · Strategy</span>
+  <h2 id="t4">How to build a career in instant photography</h2>
+  <div class="cards">
+    <div class="card"><h3>Position on a story, not the camera</h3><p>Every lasting career is a long narrative under one constraint: Schneider's desert dramas on expired film, Rhiannon Adam's Pitcairn, Phillip Leeds' celebrity portraits on one Big Shot camera.</p></div>
+    <div class="card"><h3>Pick techniques for the market they open</h3><p>Emulsion lifts give one-off objects (Polaroid film only, not Instax). Expired film plus enlargement gives gallery editions. SX-70 manipulation and mixed media follow the Samaras lineage auctions already reward.</p></div>
+    <div class="card"><h3>Find buyers online, close in person</h3><p>Online-only art sales fell to $9.2B in 2025. Build reach on Instagram and 'Roid Week, sell at fairs, studio days and through galleries. Copy Schneider's stack: 1stDibs, Saatchi, Artsy, books.</p></div>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Price tier</th><th>Product</th><th>Price</th><th>Where</th></tr></thead>
+    <tbody>
+      <tr><td>1 · Entry</td><td>Unique small Polaroids or lifts, Instax sets, signed zines</td><td class="num">$50–300</td><td>Own site, Etsy, fairs, studio sales</td></tr>
+      <tr><td>2 · Collector</td><td>Framed SX-70 / i-Type uniques, grids of 4–9</td><td class="num">$500–2,500</td><td>Affordable Art Fair, juried shows, Artsper, 1stDibs</td></tr>
+      <tr><td>3 · Gallery</td><td>Unique 8x10 works; enlargements in editions of 3–10</td><td class="num">$1,000–5,000</td><td>Gallery, Artsy via gallery</td></tr>
+    </tbody></table></div>
+  <p class="src">Film is not the constraint: at ~$2.10 per i-Type shot and one keeper in three, film costs $6–9 per finished unique. Gallery commission (usually 50%) and framing take most of the margin. Fix edition sizes up front (e.g. 13x19 ed. 10, 24x30 ed. 5) and label enlargements as reproductions of a unique original.</p>
+</section>
+
+<section aria-labelledby="t5">
+  <span class="eyebrow">05 · Action plan</span>
+  <h2 id="t5">A three-year plan</h2>
+  <div class="print" style="padding-bottom:4px">
+    <div class="phase"><span class="when">0–6 months</span><div><h3>Foundation: define the voice</h3>
+      <ul><li>Choose one camera/film constraint and one long-term subject; shoot 300–500 frames, edit to a 20–30 image series.</li><li>Learn one signature technique (lifts, SX-70 manipulation or expired stock).</li><li>Set up archival scanning, certificates of authenticity, care sheets. Join 'Roid Week.</li></ul>
+      <p class="ms"><b>Milestone</b>A coherent series and 10–20 first sales at $50–300.</p></div></div>
+    <div class="phase"><span class="when">6–18 months</span><div><h3>Validation: earn credentials</h3>
+      <ul><li>Enter 4–6 instant-only open calls a year: Praxis (January), All About Photo, Blue Sky, A Smith, Analog Forever.</li><li>Self-publish a numbered zine (ed. 100). Take event or wedding instant work for cash flow.</li><li>Go to Paris Photo or Photo London to meet brand and publisher staff.</li></ul>
+      <p class="ms"><b>Milestone</b>2–3 juried selections; first sales at $500–2,500.</p></div></div>
+    <div class="phase"><span class="when">18–36 months</span><div><h3>Scale: representation, books, brands</h3>
+      <ul><li>Pitch independent photobook publishers with the finished series.</li><li>Approach galleries and Affordable Art Fair exhibitors with your press record.</li><li>Release small-edition enlargements. Pitch Polaroid or Instax a finished story with a proposed activation.</li><li>Start an 8x10 or 20x24 sub-series for the top tier.</li></ul>
+      <p class="ms"><b>Milestone</b>Gallery consignment, a photobook, one paid brand collaboration, first $1,000–5,000 sales.</p></div></div>
+    <div class="phase"><span class="when">36+ months</span><div><h3>Consolidate: long-term value</h3>
+      <ul><li>Raise prices 10–20% after each sell-out, never cut them.</li><li>Seek institutional group shows (Helmut Newton Foundation, Foam-type programmes) and collection placements.</li></ul>
+      <p class="ms"><b>Milestone</b>Museum or foundation inclusion; visibility on the secondary market.</p></div></div>
+  </div>
+</section>
+
+<section aria-labelledby="t6">
+  <span class="eyebrow">06 · Risks</span>
+  <h2 id="t6">What can go wrong</h2>
+  <div class="cards">
+    <div class="risk"><h3>Fading</h3><p>UV fading is permanent and rates differ by film batch. Sell with care sheets, archival framing advice and a high-res scan of every original.</p></div>
+    <div class="risk"><h3>One film factory</h3><p>All Polaroid-format film comes from Enschede; SX-70 stock runs out. Keep a refrigerated reserve and a second format.</p></div>
+    <div class="risk"><h3>Costs and tariffs</h3><p>The instax mini 41 launched 30% above its predecessor in 2025; film prices keep rising.</p></div>
+    <div class="risk"><h3>Crowded low end and fad risk</h3><p>Cheap "Polaroid" prints crowd Etsy. Instax sales fell ~90% in 2002–04, though capacity plans to 2028 argue against a near-term collapse.</p></div>
+  </div>
+</section>
+
+<footer>Built from four research tracks (industry data, auctions, contemporary artists, artist economics). Several figures come from search-result excerpts rather than full source pages; Polaroid's own revenue is unaudited and the ~¥200B FY2025 instax revenue figure is unverified. Full report with all citations: <span style="font-family:var(--mono)">reports/Polaroid art market analysis.md</span>.</footer>
+</main>
+
+<script>
+(function(){
+  const NS="http://www.w3.org/2000/svg";
+  const el=(t,a,txt)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e};
+  // Revenue bars
+  const rev=document.getElementById("rev");
+  const data=[["FY2020",285.2],["FY2021",333.4],["FY2022",410.3],["FY2023",null],["FY2024",542.0],["FY2025",627.1]];
+  const L=48,R=620,T=24,B=260,max=700,y=v=>B-(v/max)*(B-T);
+  const g=el("g",{class:"grid"});rev.appendChild(g);
+  [0,200,400,600].forEach(v=>{g.appendChild(el("line",{x1:L,x2:R,y1:y(v),y2:y(v)}));rev.appendChild(el("text",{x:L-8,y:y(v)+4,"text-anchor":"end"},v))});
+  const step=(R-L)/data.length,bw=step*0.56;
+  data.forEach(([k,v],i)=>{
+    const x=L+i*step+(step-bw)/2,last=i===data.length-1;
+    if(v==null){rev.appendChild(el("rect",{x,y:y(40),width:bw,height:B-y(40),fill:"none",stroke:"var(--line)","stroke-dasharray":"4 3"}));
+      rev.appendChild(el("text",{x:x+bw/2,y:y(40)-6,"text-anchor":"middle"},"n/a"));}
+    else{rev.appendChild(el("rect",{x,y:y(v),width:bw,height:B-y(v),rx:2,fill:last?"var(--accent)":"var(--accent-soft)",stroke:last?"none":"var(--accent)","stroke-width":1}));
+      rev.appendChild(el("text",{x:x+bw/2,y:y(v)-7,"text-anchor":"middle",class:"val"},"¥"+Math.round(v)+"B"));}
+    rev.appendChild(el("text",{x:x+bw/2,y:B+20,"text-anchor":"middle"},k));
+  });
+  // Price tiers, log scale $1..$1M
+  const tv=document.getElementById("tiers");
+  const tiers=[["Commoditised low end",3,30,0],["Emerging, sold direct",50,700,1],["Established instant artists",300,2800,1],["Blue-chip single Polaroids",2000,20000,0],["Manipulated unique objects",15000,50000,0],["Estate groups & icons",50000,722500,0]];
+  const PL=200,PR=620,PT=16,rowH=44,lx=v=>PL+(Math.log10(v)/6)*(PR-PL);
+  const gg=el("g",{class:"grid"});tv.appendChild(gg);
+  const bottom=PT+tiers.length*rowH;
+  [[1,"$1"],[10,"$10"],[100,"$100"],[1e3,"$1k"],[1e4,"$10k"],[1e5,"$100k"],[1e6,"$1M"]].forEach(([v,s])=>{
+    gg.appendChild(el("line",{x1:lx(v),x2:lx(v),y1:PT,y2:bottom}));
+    tv.appendChild(el("text",{x:lx(v),y:bottom+18,"text-anchor":"middle"},s));});
+  const fmt=v=>v>=1000?"$"+(v/1000).toFixed(v>=10000?0:1).replace(".0","")+"k":"$"+v;
+  tiers.forEach(([name,lo,hi,hl],i)=>{
+    const cy=PT+i*rowH+rowH/2;
+    tv.appendChild(el("text",{x:0,y:cy+4,class:"lbl"},name));
+    tv.appendChild(el("rect",{x:lx(lo),y:cy-9,width:Math.max(4,lx(hi)-lx(lo)),height:18,rx:9,fill:hl?"var(--accent)":"var(--accent-soft)",stroke:"var(--accent)","stroke-width":hl?0:1}));
+    const t=el("text",{x:lx(hi)+6,y:cy+4,class:"val"},fmt(lo)+"–"+fmt(hi));
+    if(lx(hi)>540){t.setAttribute("x",lx(lo)-6);t.setAttribute("text-anchor","end");}
+    tv.appendChild(t);
+  });
+})();
+</script>
